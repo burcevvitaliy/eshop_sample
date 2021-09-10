@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Category;
-use App\Models\Subcategory;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [CategoryController::class, 'showCategories']);
+Route::get('/subcategory/{id}', [CategoryController::class, 'showSubcategories']);
+Route::get('/productlist/{id}', [ProductListController::class, 'showProductList']);
+Route::post('/productlist/{id}', [ProductListController::class, 'getProductList']);
+
+//Route::get('/', function () {
     
     /*
     1 - M
@@ -27,5 +32,6 @@ Route::get('/', function () {
     $result = $subcat->category;
     */
 
-    return view('welcome');
-});
+  //  return view('shop.categories');
+//});
+

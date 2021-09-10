@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\Product;
 use App\ShopData\ShopData;
+use Faker\Generator;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class MainSeeder extends Seeder
 {
@@ -14,13 +16,14 @@ class MainSeeder extends Seeder
      *
      * @return void
      */
-    public function run(ShopData $appSeeder)
+    public function run(ShopData $appSeeder, Generator $faker)
     {
         $categories = $appSeeder->getCategories();
  
         foreach ($categories as $category_name) {
             $category_id = DB::table('categories')->insertGetId([
-                'name' => $category_name
+                'name' => $category_name,
+                'photo' => $faker->imageUrl(),
             ]);
             
             $sub_categories = $appSeeder->getSubCategories($category_name);
@@ -28,6 +31,7 @@ class MainSeeder extends Seeder
             foreach ($sub_categories as $sub_category_name) {
                 $subcategory_id = DB::table('subcategories')->insertGetId([
                     'name' => $sub_category_name,
+                    'photo' => $faker->imageUrl(),
                     'category_id' => $category_id
                 ]);
 
@@ -42,6 +46,7 @@ class MainSeeder extends Seeder
                 foreach ($attributes as $attribute_name) {
                     $attribute_id = DB::table('attributes')->insertGetId([
                         'name' => $attribute_name,
+                        'slug' =>  Str::slug($attribute_name, '_'),
                         'subcategory_id' => $subcategory_id
                     ]);
 
