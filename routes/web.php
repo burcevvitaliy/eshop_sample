@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductListController;
+use App\Http\Controllers\ShoppingCartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +21,14 @@ Route::get('/', [CategoryController::class, 'showCategories']);
 Route::get('/subcategory/{id}', [CategoryController::class, 'showSubcategories']);
 Route::get('/productlist/{id}', [ProductListController::class, 'showProductList']);
 Route::post('/productlist/{id}', [ProductListController::class, 'getProductList']);
+
+Route::get('/shoppingcart/show',[ShoppingCartController::class, 'show']);
+Route::post('/shoppingcart/add',[ShoppingCartController::class, 'add']);
+Route::post('/shoppingcart/changeitemcount', [ShoppingCartController::class, 'changeItemCount']);
+Route::post('/shoppingcart/remove',[ShoppingCartController::class, 'remove']);
+
+Route::get('/order/makeorder',[OrderController::class, 'makeOrder']);
+
 
 //Route::get('/', function () {
     

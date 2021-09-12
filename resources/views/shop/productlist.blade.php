@@ -41,13 +41,48 @@
     class ListProducts {
         static buildListProducts(products)
         {
+            let action_in_cart = '';
+            console.log(products)
             products.forEach(function(item) {
+                if (item.is_in_cart) {
+                    action_in_cart = '<a href="/shoppingcart/show" class="btn btn-danger btn-sm" data-item-id="'+item.id+'" role="button">In Cart</a>'
+                } else {
+                    action_in_cart = '<a href="#" class="btn btn-danger btn-sm add_in_cart" data-item-id="'+item.product_id+'" role="button">Add In Cart</a>'
+                }
                 item = '<div class="col-sm-4 column productbox">'+
                     '<img width="120px"  src="'+item.photo+'" class="img-responsive">'+
                     '<div class="producttitle">'+item.product_name+'</div>'+
-                    '<div class="productprice"><div class="pull-right"><a href="#" class="btn btn-danger btn-sm" role="button">BUY</a></div><div class="pricetext">$'+item.price+'</div></div>'+
+                    '<div class="productprice"><div class="pull-right">'+action_in_cart +'</div><div class="pricetext">$'+item.price+'</div></div>'+
                 '</div>'
                 $('#productList').append(item)
+            })
+
+            $('.add_in_cart').on('click', function(e) {
+                e.preventDefault();
+                $('.loading').show();
+                var that = this
+                
+                const promise = new Promise((resolve, reject) => {
+                
+                    const fd = new FormData;
+                    fd.append('product_id', $(e.currentTarget).data('item-id'));
+                    $.ajax({
+                        url:  '/shoppingcart/add/',
+                        data: fd,
+                        processData: false,
+                        contentType: false, 
+                        type: 'POST',
+                        success: function (data) {
+                            $(that).text('In Cart');
+                            $(that).removeClass('add_in_cart');
+                            $(that).off('click');
+                            that.href = '/shoppingcart/show'
+                            resolve(data)    
+                        }
+                    });
+                }).finally(function(){
+                    $('.loading').hide();
+                });
             })
         }
     }

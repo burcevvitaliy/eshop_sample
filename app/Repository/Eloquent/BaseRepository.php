@@ -32,6 +32,18 @@ class BaseRepository implements EloquentRepositoryInterface
     {
         return $this->model->create($attributes);
     }
+
+    /**
+    * @param array $attributes
+    *
+    * @return Model
+    */
+    public function update(array $attributes): int
+    {
+        $id = $attributes['id'];
+        unset($attributes['id']);
+        return $this->model->where('id', $id)->update($attributes);
+    }
  
     /**
     * @param $id

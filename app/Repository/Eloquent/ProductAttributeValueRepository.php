@@ -17,7 +17,7 @@ class ProductAttributeValueRepository extends BaseRepository
 
         $price_filters = reset($filters['price']);
         unset($filters['price']);
-        $query = $this->model->select('products.id as product_id', 'products.name as product_name', 'products.photo', 'products.price');
+        $query = $this->model->selectRaw('products.id as product_id, products.name as product_name, products.photo, products.price, 0 as is_in_cart');
         foreach ($filters as $grouped_filter) {
             $query = $query->whereExists(function($subquery) use($grouped_filter) {
                 $filter = reset($grouped_filter);
