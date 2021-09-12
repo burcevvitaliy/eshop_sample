@@ -41,7 +41,7 @@ class MainSeeder extends Seeder
                     continue;
                 }
                 //product
-                $products = Product::factory(5)->create();
+                $products = Product::factory(25)->create();
 
                 foreach ($attributes as $attribute_name) {
                     $attribute_id = DB::table('attributes')->insertGetId([

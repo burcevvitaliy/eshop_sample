@@ -5,6 +5,7 @@
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ url('css/loader.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url('css/cards.css') }}">
+<div class="loading">Loading&#8230;</div>
 <div class="container-fluid mt-3 mb-4">
 
 <div class="col-lg-12">
@@ -16,7 +17,7 @@
                    
                 </div>
                 <div class="card-footer border-light cart-panel-foo-fix">
-                    <a href="/" class="btn btn-add-con">Continue Shopping</a>
+                    <a href="/" class="btn btn-add-con continue_shopping">Continue Shopping</a>
                     <a href="/order/prepareorder" class="btn btn-cust">Place Order</a>
                 </div>
             </div>
@@ -26,6 +27,7 @@
 
 </div>
 <script>
+    $('.loading').hide();
     class ListCartItems
     {
         static buildListCartItems(cart_items)
@@ -101,9 +103,9 @@
 
             $('.addcardrmv').on('click', function(e) {
                 e.preventDefault();
-
+               
                 $('.loading').show();
-
+     
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -132,6 +134,11 @@
             });
         }
     }
+
+    $('.continue_shopping').click(function(e){
+        e.preventDefault();
+        window.location.href = document.referrer;
+    })
 
     var cart_items = @json($shopping_cart_items);
     ListCartItems.buildListCartItems(cart_items);

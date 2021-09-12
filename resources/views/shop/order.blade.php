@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" type="text/css" href="{{ url('css/loader.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url('css/cards.css') }}">
+<div class="loading">Loading&#8230;</div>
 <div class="container-fluid mt-3 mb-4">
 
 <div class="col-lg-12">
@@ -52,6 +53,7 @@
 
 </div>
 <script>
+    $('.loading').hide();
     class ListCartItems
     {
         static buildListCartItems(cart_items)

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ShoppingCartController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,8 @@ Route::get('/', [CategoryController::class, 'showCategories']);
 Route::get('/subcategory/{id}', [CategoryController::class, 'showSubcategories']);
 Route::get('/productlist/{id}', [ProductListController::class, 'showProductList']);
 Route::post('/productlist/{id}', [ProductListController::class, 'getProductList']);
+
+Route::get('/product/{id}', [ProductController::class, 'show']);
 
 Route::get('/shoppingcart/show',[ShoppingCartController::class, 'show']);
 Route::post('/shoppingcart/add',[ShoppingCartController::class, 'add']);

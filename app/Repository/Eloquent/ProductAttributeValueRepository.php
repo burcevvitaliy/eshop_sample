@@ -45,4 +45,36 @@ class ProductAttributeValueRepository extends BaseRepository
 
         return $result;
     }
+
+    public function getDetailProduct($product_id)
+    {
+        $result = $this->model->selectRaw(
+            '
+                products.*,
+                attributes.name as attribute_name,
+                attribute_values.value as attribute_value
+            '
+        )->where('product_id', $product_id)
+        ->join('products', 'products.id', '=', 'product_attribute_values.product_id')
+        ->join('attributes', 'attributes.id', '=', 'product_attribute_values.attribute_id')
+        ->join('attribute_values', 'attribute_values.id', '=', 'product_attribute_values.attribute_value_id')->get();
+        //dd($result);
+
+        $product = collect();
+        foreach ($result as $item) {
+            $product->name = $item->name;
+            $product->price = $item->price;
+            $product->photo = $item->photo;
+            $product->description = $item->description;
+            if (!isset($product->product_attributes)) {
+                $product->product_attributes = [];    
+            }
+            $product->product_attributes[] = [
+                'attribute_name' => $item->attribute_name,
+                'attribute_value' => $item->attribute_value,
+            ];
+        }
+
+        return $product;
+    }
 }

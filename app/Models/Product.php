@@ -11,6 +11,6 @@ class Product extends Model
     
     public function productAttributeValues()
     {
-        return $this->hasMany(ProductAttributeValues::class);
+        return $this->hasMany(ProductAttributeValue::class);
     }
 }
