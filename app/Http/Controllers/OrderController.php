@@ -10,17 +10,16 @@ class OrderController extends Controller
 {
     public function prepareOrder(ShoppingCartService $shoppingCartService, Request $request)
     {
-        $items = $shoppingCartService->showShoppingCart($request->session()->getId());
+        $shopping_cart_items = $shoppingCartService->showShoppingCart($request->session()->getId());
 
-        
+        return view('shop.order', [
+            'shopping_cart_items' => $shopping_cart_items
+        ]);
     }
 
     public function makeOrder(Request $request, OrderService $orderService)
     {
-        $order_data = [
-            'name' => 'Vitos',
-            'email' => 'vitos@gmail.com',
-        ];
+        $order_data = $request->all();
 
         $orderService->makeOrder($request->session()->getId(), $order_data);
     }

@@ -18,6 +18,9 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/loader.css', 'public/css', [
         //
     ])
+    .postCss('resources/css/cards.css', 'public/css', [
+        //
+    ])
     .postCss('resources/css/box.css', 'public/css', [
         //
     ]);

@@ -27,7 +27,8 @@ Route::post('/shoppingcart/add',[ShoppingCartController::class, 'add']);
 Route::post('/shoppingcart/changeitemcount', [ShoppingCartController::class, 'changeItemCount']);
 Route::post('/shoppingcart/remove',[ShoppingCartController::class, 'remove']);
 
-Route::get('/order/makeorder',[OrderController::class, 'makeOrder']);
+Route::get('/order/prepareorder',[OrderController::class, 'prepareOrder']);
+Route::post('/order/makeorder',[OrderController::class, 'makeOrder']);
 
 
 //Route::get('/', function () {

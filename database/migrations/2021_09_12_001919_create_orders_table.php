@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
+            $table->string('phone');
             $table->decimal('full_price', 10, 4, true);
             $table->timestamps();
         });
