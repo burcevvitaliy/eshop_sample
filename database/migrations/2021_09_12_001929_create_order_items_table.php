@@ -21,6 +21,9 @@ class CreateOrderItemsTable extends Migration
             $table->decimal('item_price', 10, 4, true);
             $table->decimal('full_price', 10, 4, true);
             $table->timestamps();
+
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
