@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductListController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ShoppingCartController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,8 @@ Route::post('/shoppingcart/remove',[ShoppingCartController::class, 'remove']);
 Route::get('/order/prepareorder',[OrderController::class, 'prepareOrder']);
 Route::post('/order/makeorder',[OrderController::class, 'makeOrder']);
 
+
+Route::get('/makeorderreport',[ReportController::class, 'makeorderreport']);
 
 //Route::get('/', function () {
     
