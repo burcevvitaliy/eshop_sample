@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderSent;
 use App\Services\OrderService;
 use App\Services\ShoppingCartService;
 use Illuminate\Http\Request;
@@ -21,6 +22,8 @@ class OrderController extends Controller
     {
         $order_data = $request->all();
 
-        $orderService->makeOrder($request->session()->getId(), $order_data);
+        $order = $orderService->makeOrder($request->session()->getId(), $order_data);
+
+        OrderSent::dispatch($order);
     }
 }

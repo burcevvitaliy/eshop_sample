@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Repository\AttributeRepositoryInterface;
 use App\Repository\Eloquent\AttributeRepository;
 use App\Services\Filters\PriceFilter;
 use App\Services\Filters\ProductFilter;
@@ -12,7 +13,7 @@ class ProductFilterService
     private $filters = [];
     private $available_filters = [];
 
-    public function __construct(AttributeRepository $attributeRepository)
+    public function __construct(AttributeRepositoryInterface $attributeRepository)
     {
         $this->attributeRepository = $attributeRepository;
     }

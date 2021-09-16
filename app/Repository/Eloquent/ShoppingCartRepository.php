@@ -3,9 +3,10 @@
 namespace App\Repository\Eloquent;
 
 use App\Models\ShoppingCart;
+use App\Repository\ShoppingCartRepositoryInterface;
 use Illuminate\Support\Collection;
 
-class ShoppingCartRepository extends BaseRepository
+class ShoppingCartRepository extends BaseRepository implements ShoppingCartRepositoryInterface
 {
     public function __construct(ShoppingCart $shoppingCart)
     {

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Repository\Eloquent\CategoryRepository;
-use App\Repository\Eloquent\SubcategoryRepository;
+use App\Repository\CategoryRepositoryInterface;
+use App\Repository\SubcategoryRepositoryInterface;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function showCategories(CategoryRepository $categoryRepository, Request $request)
+    public function showCategories(CategoryRepositoryInterface $categoryRepository, Request $request)
     {
         $request->session()->put('key', 'one');
         $categories = $categoryRepository->showCategoriesForHomePage();
@@ -18,7 +18,7 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function showSubcategories($category_id, SubcategoryRepository $subcategoryRepository)
+    public function showSubcategories($category_id, SubcategoryRepositoryInterface $subcategoryRepository)
     {
         $subcategories = $subcategoryRepository->showSubcategories($category_id);
 

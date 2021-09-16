@@ -3,9 +3,10 @@
 namespace App\Repository\Eloquent;
 
 use App\Models\AttributeValue;
+use App\Repository\AttributeValueRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 
-class AttributeValueRepository extends BaseRepository
+class AttributeValueRepository extends BaseRepository implements AttributeValueRepositoryInterface
 {
     public function __construct(AttributeValue $attributeValue)
     {

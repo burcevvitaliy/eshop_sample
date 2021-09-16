@@ -3,10 +3,11 @@
 namespace App\Repository\Eloquent;
 
 use App\Models\Order;
+use App\Repository\OrderRepositoryInterface;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
-class OrderRepository extends BaseRepository
+class OrderRepository extends BaseRepository implements OrderRepositoryInterface
 {
     public function __construct(Order $order)
     {
@@ -14,8 +15,9 @@ class OrderRepository extends BaseRepository
     }
 
     public function createOrder($session_id, $shopping_cart_items, $order_data)
-    {        
-        DB::transaction(function () use ($session_id, $shopping_cart_items, $order_data) {
+    {   
+        $order = null;
+        DB::transaction(function () use ($session_id, $shopping_cart_items, $order_data, &$order) {
             $saved_order_id = 0;
             $full_price_sum = 0;
             $order_items = [];
@@ -35,9 +37,13 @@ class OrderRepository extends BaseRepository
             $order_data['full_price'] = $full_price_sum;
 
             $order = $this->model->create($order_data);
+            
             $saved_order_id = $order->id;
             DB::table('order_items')->insert($order_items);
             DB::table('shopping_cart_items')->where('session_id', $session_id)->delete();
         });
+
+    
+        return $order;
     }
 }

@@ -51,8 +51,8 @@
                 }
                 item = '<div class="col-sm-4 column productbox">'+
                     '<img width="120px"  src="'+item.photo+'" class="img-responsive">'+
-                    '<div class="producttitle">'+item.product_name+'</div>'+
-                    '<div class="productprice"><div class="pull-right">'+action_in_cart +'</div><div class="pricetext">$'+item.price+'</div></div>'+
+                    '<div class="producttitle"><a target="_blank" href="/product/'+item.product_id+'">'+item.product_name+'</a></div>'+
+                    '<div class="productprice"><div class="pull-right">'+action_in_cart +'</div><div class="pricetext">$'+parseFloat(item.price).toFixed(2)+'</div></div>'+
                 '</div>'
                 $('#productList').append(item)
             })
@@ -81,6 +81,10 @@
                         }
                     });
                 }).finally(function(){
+                    let shopping_cart_item_count = $('#shopping_cart_item_count').html();
+                    
+                    shopping_cart_item_count++;
+                    $('#shopping_cart_item_count').html(shopping_cart_item_count);
                     $('.loading').hide();
                 });
             })
@@ -252,6 +256,7 @@
             });
         }
     }
+
     var filters = @json($filters);
 
     $f = new Filters(filters);

@@ -3,9 +3,10 @@
 namespace App\Repository\Eloquent;
 
 use App\Models\Subcategory;
+use App\Repository\SubcategoryRepositoryInterface;
 use Illuminate\Support\Collection;
 
-class SubcategoryRepository extends BaseRepository
+class SubcategoryRepository extends BaseRepository implements SubcategoryRepositoryInterface
 {
     public function __construct(Subcategory $subcategory)
     {

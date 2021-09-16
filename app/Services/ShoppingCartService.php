@@ -4,13 +4,15 @@ namespace App\Services;
 
 use App\Repository\Eloquent\ShoppingCartItemRepository;
 use App\Repository\Eloquent\ShoppingCartRepository;
+use App\Repository\ShoppingCartItemRepositoryInterface;
+use App\Repository\ShoppingCartRepositoryInterface;
 
 class ShoppingCartService
 {
     private $shoppingCartRepository;
     private $shoppingCartItemRepository;
 
-    public function __construct(ShoppingCartRepository $shoppingCartRepository, ShoppingCartItemRepository $shoppingCartItemRepository)
+    public function __construct(ShoppingCartRepositoryInterface $shoppingCartRepository, ShoppingCartItemRepositoryInterface $shoppingCartItemRepository)
     {
         $this->shoppingCartRepository = $shoppingCartRepository;
         $this->shoppingCartItemRepository = $shoppingCartItemRepository;
@@ -76,5 +78,12 @@ class ShoppingCartService
 
        
         return $products;
+    }
+
+    public function getCountItems($session_id)
+    {
+        $count_items = $this->shoppingCartItemRepository->getCountItemsInCart($session_id);
+
+        return $count_items;
     }
 }

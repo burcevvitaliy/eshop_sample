@@ -38,7 +38,7 @@
                         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/shoppingcart/show">My Cart</span></a>
+                        <a class="nav-link" href="/shoppingcart/show">My Cart (<span id="shopping_cart_item_count">{{$shopping_cart_item_count}}</span>)</span></a>
                     </li>
                     </ul>
 

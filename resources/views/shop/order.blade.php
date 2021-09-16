@@ -72,10 +72,10 @@
                                         '</div>'+
                                         '<div class="col-8 col-lg-9 col-xl-10">'+
                                             '<div class="d-block text-truncate mb-1">'+
-                                                '<a href="cateview.php" class="cartproname">'+item.name+'</a>'+
+                                                '<a target="_blank" href="/product/'+item.product_id+'" class="cartproname">'+item.name+'</a>'+
                                             '</div>'+
                                             '<div class="cartviewprice d-block">'+
-                                                '<span class="amt">$'+item.price+' x '+item.count+' = Total: $'+parseFloat(item.price * item.count).toFixed(2)+'</span>'+
+                                                '<span class="amt">$'+parseFloat(item.price).toFixed(2)+' x '+item.count+' = Total: $'+parseFloat(item.price * item.count).toFixed(2)+'</span>'+
                                             '</div>'+
                                         '</div>'+
                                     '</div>'+

@@ -3,9 +3,10 @@
 namespace App\Repository\Eloquent;
 
 use App\Models\ShoppingCartItem;
+use App\Repository\ShoppingCartItemRepositoryInterface;
 use Illuminate\Support\Collection;
 
-class ShoppingCartItemRepository extends BaseRepository
+class ShoppingCartItemRepository extends BaseRepository implements ShoppingCartItemRepositoryInterface
 {
     public function __construct(ShoppingCartItem $shoppingCartItem)
     {
@@ -32,12 +33,9 @@ class ShoppingCartItemRepository extends BaseRepository
         $this->model->where('session_id', $session_id)->where('product_id', $product_id)->delete();
     }
 
-    // public function getItemsByShoppingCart($shopping_cart_id)
-    // {
-    //     $items = $this->model->where('shopping_cart_id', $shopping_cart_id)
-    //     ->join('products', 'products.id', '=', 'shopping_cart_items.product_id')
-    //     ->get();
-    //     return $items;
-    // }
+    public function getCountItemsInCart($session_id)
+    {
+        return $this->model->where('session_id', $session_id)->count();
+    }
 }
 

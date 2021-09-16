@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use App\Repository\Eloquent\AttributeValueRepository;
+use App\Repository\AttributeValueRepositoryInterface;
 
 class FilterService 
 {
     private $attributeValueRepository;
 
-    public function __construct(AttributeValueRepository $attributeValueRepository)
+    public function __construct(AttributeValueRepositoryInterface $attributeValueRepository)
     {
         $this->attributeValueRepository = $attributeValueRepository;
     }

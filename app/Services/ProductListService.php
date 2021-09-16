@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repository\Eloquent\ProductAttributeValueRepository;
+use App\Repository\ProductAttributeValueRepositoryInterface;
 use App\Services\ProductFilters\ProductFilter;
 use Illuminate\Cache\Repository;
 
@@ -11,7 +11,7 @@ class ProductListService
     private $productAttributeValueRepository;
     private $productFilterService;
 
-    public function __construct(ProductAttributeValueRepository $productAttributeValueRepository, ProductFilterService $productFilterService)
+    public function __construct(ProductAttributeValueRepositoryInterface $productAttributeValueRepository, ProductFilterService $productFilterService)
     {
         $this->productAttributeValueRepository = $productAttributeValueRepository;
         $this->productFilterService = $productFilterService;

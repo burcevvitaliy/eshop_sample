@@ -3,9 +3,10 @@
 namespace App\Repository\Eloquent;
 
 use App\Models\ProductAttributeValue;
+use App\Repository\ProductAttributeValueRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 
-class ProductAttributeValueRepository extends BaseRepository
+class ProductAttributeValueRepository extends BaseRepository implements ProductAttributeValueRepositoryInterface
 {
     public function __construct(ProductAttributeValue $productAttributeValue)
     {

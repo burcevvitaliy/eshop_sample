@@ -46,10 +46,10 @@
                                         '</div>'+
                                         '<div class="col-8 col-lg-9 col-xl-10">'+
                                             '<div class="d-block text-truncate mb-1">'+
-                                                '<a href="cateview.php" class="cartproname">'+item.name+'</a>'+
+                                                '<a target="_blank" href="/product/'+item.product_id+'" class="cartproname">'+item.name+'</a>'+
                                             '</div>'+
                                             '<div class="cartviewprice d-block">'+
-                                                '<span class="amt">$'+item.price+'</span>'+
+                                                '<span class="amt">$'+parseFloat(item.price).toFixed(2)+'</span>'+
                                             '</div>'+
                                         '</div>'+
                                     '</div>'+
@@ -129,6 +129,10 @@
                         }
                     });
                 }).finally(function(){
+                    let shopping_cart_item_count = $('#shopping_cart_item_count').html();
+                    
+                    shopping_cart_item_count--; 
+                    $('#shopping_cart_item_count').html(shopping_cart_item_count);
                     $('.loading').hide();
                 });
             });
