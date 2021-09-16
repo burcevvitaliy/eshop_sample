@@ -234,4 +234,8 @@ return [
 
     ],
 
+
+    //some constants
+    "CACHE_CATEGORIES" => 3600,//SECONDS
+    "CACHE_SUBCATEGORIES" => 3600,//SECONDS
 ];

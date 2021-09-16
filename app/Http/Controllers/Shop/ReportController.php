@@ -10,5 +10,6 @@ class ReportController extends Controller
     public function makeorderreport()
     {
         ImportOrderInCSV::dispatch();
+        return response()->json(['status' => true, 'message' => 'ok', 'result' => []]);
     }
 }
