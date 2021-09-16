@@ -23,7 +23,7 @@ class OrderService
     public function makeOrder($session_id, $order_data)
     {
         $shopping_cart_items = $this->shoppingCartItemRepository->getItems($session_id);
-
+      
         return $this->orderRepository->createOrder($session_id, $shopping_cart_items, $order_data);
     }
 }

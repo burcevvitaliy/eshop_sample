@@ -2,7 +2,7 @@
 
 namespace App\Repository\Eloquent;
 
-use App\Models\OrderItem;
+use App\Models\Shop\OrderItem;
 use App\Repository\OrderItemRepositoryInterface;
 use Illuminate\Support\Collection;
 

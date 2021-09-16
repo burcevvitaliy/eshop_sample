@@ -2,7 +2,7 @@
 
 namespace App\Repository\Eloquent;
 
-use App\Models\Subcategory;
+use App\Models\Shop\Subcategory;
 use App\Repository\SubcategoryRepositoryInterface;
 use Illuminate\Support\Collection;
 

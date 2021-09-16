@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Shop;
 
 use App\Events\OrderSent;
 use App\Services\OrderService;
@@ -23,7 +23,7 @@ class OrderController extends Controller
         $order_data = $request->all();
 
         $order = $orderService->makeOrder($request->session()->getId(), $order_data);
-
+      
         OrderSent::dispatch($order);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Repository\Eloquent;
 
-use App\Models\ProductAttributeValue;
+use App\Models\Shop\ProductAttributeValue;
 use App\Repository\ProductAttributeValueRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 

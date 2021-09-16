@@ -2,7 +2,7 @@
 
 namespace App\Repository\Eloquent;
 
-use App\Models\ShoppingCart;
+use App\Models\Shop\ShoppingCart;
 use App\Repository\ShoppingCartRepositoryInterface;
 use Illuminate\Support\Collection;
 
