@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Product;
+use App\Models\Shop\Product;
 use App\ShopData\ShopData;
 use Faker\Generator;
 use Illuminate\Database\Seeder;
